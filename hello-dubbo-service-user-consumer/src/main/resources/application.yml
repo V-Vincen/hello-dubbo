@@ -25,10 +25,19 @@ dubbo:
   application:
     id: hello-dubbo-service-user-consumer
     name: hello-dubbo-service-user-consumer
+
+  ## ProtocolConfig Bean
+  protocol:
+    id: dubbo
+    name: dubbo
+    # serialization: kryo
+    # optimizer: 需要被序列化的类注册到 dubbo 系统中，的回调接口
+
   ## RegistryConfig Bean
   registry:
     id: zookeeper
     address: zookeeper://127.0.0.1:${embedded.zookeeper.port}
+
 
 # Dubbo Endpoint (default status is disable)
 endpoints:

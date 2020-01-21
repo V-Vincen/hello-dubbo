@@ -19,21 +19,26 @@ embedded:
 dubbo:
   scan:
     basePackages: com.example.hello.dubbo.service.user.provider.api
-    ## ApplicationConfig Bean
+  ## ApplicationConfig Bean
   application:
     id: hello-dubbo-service-user-provider
     name: hello-dubbo-service-user-provider
     qos-port: 22222
     qos-enable: true
 
-    ## ProtocolConfig Bean
+  ## ProtocolConfig Bean
   protocol:
     id: dubbo
     name: dubbo
     port: 12345
     status: server
+    serialization: kryo
+    # optimizer: 需要被序列化的类注册到 dubbo 系统中，的回调接口
 
-    ## RegistryConfig Bean
+  provider:
+    loadbalance: roundrobin
+
+  ## RegistryConfig Bean
   registry:
     id: zookepper
     address: zookeeper://127.0.0.1:${embedded.zookeeper.port}
